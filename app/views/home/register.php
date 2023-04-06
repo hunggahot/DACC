@@ -7,7 +7,7 @@ include_once('../app/views/home/layouts/header.php');
     <div class="container">
         <div class="row">
             <div class="col-lg-10 offset-lg-1">
-              <h3 class="mb-3">Login Now</h3>
+              <h3 class="mb-3">Register Now</h3>
                 <div class="bg-white shadow rounded">
                     <div class="row">
                         <div class="col-md-7 pe-0">
@@ -50,9 +50,8 @@ include_once('../app/views/home/layouts/header.php');
                                             </div>
                                         </div>
                                         <div class="col-sm-6">
-                                            <a href="#" class="float-end text-primary">Go to log in !!!</a>
+                                            <a href="?route=login" class="float-end text-primary">login !!!</a>
                                         </div>
-
                                         <div class="col-12">
                                             <button type="submit" class="btn btn-primary px-4 float-end mt-4">Register</button>
                                         </div>
