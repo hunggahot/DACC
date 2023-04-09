@@ -5,7 +5,7 @@ class User{
     public static function create($fullname, $username, $email, $password){
         global $pdo;
 
-        $sql = "INSERT INTO user (FullName, UserName, Email, Password) VALUES (:fullname, :username, :email, :password)";
+        $sql = "INSERT INTO user (FullName, UserName, Email, Pass) VALUES (:fullname, :username, :email, :password)";
 
         $stmt = $pdo->prepare($sql);
 
