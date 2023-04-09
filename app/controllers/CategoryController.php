@@ -15,8 +15,7 @@ class CategoryController
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
             $categoryname = $_POST['categoryname'];
-            $categorydes = $_POST['categorydes'];
-            $isSuccess = Category::create($categoryname, $categorydes);
+            $isSuccess = Category::create($categoryname);
             echo json_encode(['success' => $isSuccess]);
         }
     }
@@ -34,8 +33,7 @@ class CategoryController
     {
         $categoryid = $_REQUEST['CategoryId'];
         $categoryname = $_REQUEST['CategoryName'];
-        $categorydes = $_REQUEST['CategoryDes'];
-        $isSuccess = Category::update($categoryid, $categoryname, $categorydes);
+        $isSuccess = Category::update($categoryid, $categoryname);
         if ($isSuccess)
             // Redirect to homepage
             header('Location: ?route=category');
