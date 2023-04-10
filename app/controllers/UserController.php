@@ -6,9 +6,8 @@ class UserController
     public function logout()
     {
         session_start();
-        unset($_SESSION['UserId']);
-        unset($_SESSION['Error']);
-        unset($_SESSION['Avatar']);
+        session_unset();
+        session_destroy();
         header("Location: ?route=login");
         exit;
     }
@@ -31,8 +30,7 @@ class UserController
 
             $password = password_hash($pass, PASSWORD_BCRYPT);
             $isSuccess = User::create($fullname, $username, $email, $password);
-            if ($isSuccess) {
-                $_SESSION['UserId'] = "";
+            if ($isSuccess) {                
                 header('Location: ?route=login');
             } else {
                 $_SESSION['Error'] = "Loi tao tai khoan";
@@ -61,7 +59,7 @@ class UserController
             if (!empty($user)) {
                 $isSuccess = password_verify($pass, $user['Pass']);
                 if ($isSuccess) {
-                    $_SESSION['UserId'] = $user['Id'];
+                    $_SESSION['UserId'] = $user['UserId'];
                     $_SESSION['FullName'] = $user['FullName'];
                     $_SESSION['Avatar'] = $user['Avatar'];
                     header('Location: ?');
