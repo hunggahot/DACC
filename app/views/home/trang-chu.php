@@ -44,6 +44,28 @@ include_once('../app/views/home/layouts/header.php');
     </div>
 </div>
 
+<?php foreach ($postlist as $post): ?>   
+    <div class="post">
+  <div class="post-header">
+    <img class="avatar" src="../app/images/<?php echo $post['Avatar']; ?>" alt="User Avatar">
+    <div class="post-info">
+        
+      <h4 class="username"><?php echo $post['FullName']; ?></h4>
+      <p class="timestamp"><?php echo $post['PostTime']; ?></p>
+    </div>
+  </div>
+  <div class="post-content">
+    <h2><?php echo $post['PostTitle']; ?></h2>
+    <p><?php echo $post['PostDes']; ?></p>
+    <!--<img src="../app/images/" alt="Post Image">-->
+  </div>
+  <div class="post-actions">
+    <button class="like-btn"><i class="fa fa-thumbs-up"></i> Like</button>
+    <button class="comment-btn"><i class="fa fa-comment"></i> Comment</button>
+    <button class="share-btn"><i class="fa fa-share"></i> Share</button>
+  </div>
+</div>
+<?php endforeach; ?>
 <?php
 include_once('../app/views/home/layouts/footer.php');
 ?>

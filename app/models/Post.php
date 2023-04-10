@@ -3,11 +3,11 @@
 class Post
 {
     public static function getAll()
-    {
-        global $pdo;
-        $stmt = $pdo->query('SELECT * FROM post');
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
-    }
+{
+    global $pdo;
+    $stmt = $pdo->query('SELECT post.*, user.FullName, user.Avatar FROM post JOIN user ON post.UserId = user.UserId');
+    return $stmt->fetchAll(PDO::FETCH_ASSOC);
+}
 
     public static function find($postid)
     {

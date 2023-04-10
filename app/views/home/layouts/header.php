@@ -3,6 +3,7 @@
 <head>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
   <link rel="stylesheet" href="../app/views/resources/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../app/views/resources/css/mysite.css">
 </head>
 <body>
 <header class="p-3 mb-3 border-bottom">
@@ -30,12 +31,13 @@
           <?php if (isset($_SESSION['UserId'])): ?>
             
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <span><?php echo $_SESSION['FullName']; ?></span>
+            <span><img src="../app/images/<?php echo $_SESSION['Avatar']; ?>"  class="img-circle" width="50" height="50"></span>
+            
           </a>
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-            <li><a class="dropdown-item" href="#">New project...</a></li>
-            <li><a class="dropdown-item" href="#">Settings</a></li>
-            <li><a class="dropdown-item" href="#">Profile</a></li>
+            <li><p class="dropdown-header">Hello <?php echo $_SESSION['FullName']; ?> </p></li>
+            <li><a class="dropdown-item" href="?route=edit-avatar">Update Avatar</a></li>
+            <li><a class="dropdown-item" href="#">My post</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="?route=logout">Sign out</a></li>
           </ul>
