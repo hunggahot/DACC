@@ -9,21 +9,23 @@ class PostController
         require_once('../app/views/admin/post.php');
     }
 
-    public function createPost()
+    function createPost()
     {
-        session_start();
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
-            $userid = $_POST['userid'];
-            $categoryid = $_POST['categoryid'];
-            $posttitle = $_POST['posttitle'];
-            $postdes = $_POST['postdes'];
-            $posttime = date('d-m-Y H:i:s');
-            $isSuccess = Post::create($userid, $categoryid, $posttitle, $postdes, $posttime);
-            echo json_encode(['success' => $isSuccess]);
-        }
+        $userid = $_POST['userid'];
+        $categoryid = $_POST['categoryid'];
+        $posttitle = $_POST['posttitle'];
+        $postdes = $_POST['postdes'];
+        $posttime = date('d-m-Y H:i:s');
+        $isSuccess = Post::create($userid, $categoryid, $posttitle, $postdes, $posttime);
+        if ($isSuccess)
+            // Redirect to homepage
+            header('Location: ?');
+        else
+            header('Location: ?route=failure');
+        exit;
+
     }
-
     public function editPost()
     {
         if ($_SERVER['REQUEST_METHOD'] == "POST") {

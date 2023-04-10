@@ -31,7 +31,7 @@ class User{
     {
       global $pdo;
   
-      $sql = "UPDATE user SET Avatar=:a where Id=:i";
+      $sql = "UPDATE user SET Avatar=:a where UserId=:i";
       $stmt = $pdo->prepare($sql);
   
   
