@@ -3,7 +3,6 @@
 <head>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css">
   <link rel="stylesheet" href="../app/views/resources/css/bootstrap.min.css">
-  <link rel="stylesheet" href="../app/views/resources/css/mysite.css">
 </head>
 <body>
 <header class="p-3 mb-3 border-bottom">
@@ -23,29 +22,20 @@
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
           <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
         </form>
-  
-        <?php
-        session_start();
-        ?>
+        
         <div class="dropdown text-end">
-          <?php if (isset($_SESSION['UserId'])): ?>
-            
           <a href="#" class="d-block link-dark text-decoration-none dropdown-toggle" id="dropdownUser1" data-bs-toggle="dropdown" aria-expanded="false">
-            <span><img src="../app/images/<?php echo $_SESSION['Avatar']; ?>"  class="img-circle" width="50" height="50"></span>
-            
+            <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
           </a>
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
-            <li><p class="dropdown-header">Hello <?php echo $_SESSION['FullName']; ?> </p></li>
-            <li><a class="dropdown-item" href="?route=edit-avatar">Update Avatar</a></li>
-            <li><a class="dropdown-item" href="#">My post</a></li>
+            <li><a class="dropdown-item" href="#">New project...</a></li>
+            <li><a class="dropdown-item" href="#">Settings</a></li>
+            <li><a class="dropdown-item" href="#">Profile</a></li>
             <li><hr class="dropdown-divider"></li>
-            <li><a class="dropdown-item" href="?route=logout">Sign out</a></li>
+            <li><a class="dropdown-item" href="#">Sign out</a></li>
           </ul>
-          <?php else: ?>
-          <a href="?route=login" class="btn btn-outline-primary me-2">Login</a>
-          <a href="?route=register" class="btn btn-primary">Register</a>
-          <?php endif; ?>
         </div>
+      </div>
     </div>
   </header>
   <div class="container">

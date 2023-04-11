@@ -2,10 +2,10 @@
 -- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 10, 2023 lúc 10:56 AM
--- Phiên bản máy phục vụ: 10.4.27-MariaDB
--- Phiên bản PHP: 8.2.0
+-- Host: 127.0.0.1
+-- Generation Time: Apr 08, 2023 at 06:29 PM
+-- Server version: 10.4.27-MariaDB
+-- PHP Version: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,32 +18,25 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Cơ sở dữ liệu: `dacc`
+-- Database: `dacc`
 --
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `category`
+-- Table structure for table `category`
 --
 
 CREATE TABLE `category` (
   `CategoryId` int(11) NOT NULL,
-  `CategoryName` varchar(255) DEFAULT NULL
+  `CategoryName` varchar(255) DEFAULT NULL,
+  `CategoryDes` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Đang đổ dữ liệu cho bảng `category`
---
-
-INSERT INTO `category` (`CategoryId`, `CategoryName`) VALUES
-(1, 'Đồ Điện Tử'),
-(2, 'Nhà Đất');
 
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `comment`
+-- Table structure for table `comment`
 --
 
 CREATE TABLE `comment` (
@@ -57,7 +50,7 @@ CREATE TABLE `comment` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `image`
+-- Table structure for table `image`
 --
 
 CREATE TABLE `image` (
@@ -69,7 +62,7 @@ CREATE TABLE `image` (
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `post`
+-- Table structure for table `post`
 --
 
 CREATE TABLE `post` (
@@ -81,52 +74,40 @@ CREATE TABLE `post` (
   `PostTime` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Đang đổ dữ liệu cho bảng `post`
---
-
-INSERT INTO `post` (`PostId`, `UserId`, `CategoryId`, `PostTitle`, `PostDes`, `PostTime`) VALUES
-(2, 10, 1, 'asd', 'asd', '10-04-2023 10:21:29'),
-(3, 10, 2, 'Tôi Muốn Mua Nhà', 'nhà tầm 1ty5 đến 3ty diện tích 60m2', '10-04-2023 10:48:32');
-
 -- --------------------------------------------------------
 
 --
--- Cấu trúc bảng cho bảng `user`
+-- Table structure for table `user`
 --
 
 CREATE TABLE `user` (
   `UserId` int(11) NOT NULL,
-  `UserName` varchar(50) DEFAULT NULL,
-  `Pass` varchar(250) DEFAULT NULL,
-  `FullName` varchar(250) DEFAULT NULL,
-  `Avatar` varchar(250) DEFAULT NULL,
-  `Email` varchar(250) DEFAULT NULL
+  `FullName` varchar(255) DEFAULT NULL,
+  `UserName` varchar(255) DEFAULT NULL,
+  `Email` varchar(255) DEFAULT NULL,
+  `Password` varchar(255) DEFAULT NULL,
+  `Avatar` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Đang đổ dữ liệu cho bảng `user`
+-- Dumping data for table `user`
 --
 
-INSERT INTO `user` (`UserId`, `UserName`, `Pass`, `FullName`, `Avatar`, `Email`) VALUES
-(7, '1', '$2y$10$v1o4oG7l0oVsAYhYGBZ8bOZnyMxXQDFWFcSnnq1Pa2KrKC/TZQ2FG', '1', NULL, '1'),
-(8, '1', '$2y$10$xL.OXQbEMwsoTO3FNyhoF.77AnEsLPm./djylzTSbuStIj/Xs01Uu', '1', NULL, '1'),
-(9, '1', '$2y$10$cCVLf4zuwxB5B9TfNYnLVO.Jwhk1mG/rBDB1JI7DC.b.1AFNP.yTG', '1', NULL, '1'),
-(10, 'hoa', '$2y$10$8T3EV/CEnBIJpeXH5WQkO.YIIxaPM1vuFRXhD2TtC.43u1I5SJ4Yi', 'hoa', NULL, 'hoa'),
-(11, 'dqhoa', '$2y$10$YVp7HtdsCBOslIvmS0duNOavho.SBDEiB4pNVy51FaEG.AL/XTmgu', 'Duong Quoc Hoa', NULL, 'dqhoa');
+INSERT INTO `user` (`UserId`, `FullName`, `UserName`, `Email`, `Password`, `Avatar`) VALUES
+(1, 'hung', 'hung', 'lamquochung0304@gmail.com', '$2y$10$8vVSJ3N1cfOXXWd7Q6O1juNq1S/vqkkqc19TUY96L1b8k2RYZ5CJe', NULL);
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Indexes for dumped tables
 --
 
 --
--- Chỉ mục cho bảng `category`
+-- Indexes for table `category`
 --
 ALTER TABLE `category`
   ADD PRIMARY KEY (`CategoryId`);
 
 --
--- Chỉ mục cho bảng `comment`
+-- Indexes for table `comment`
 --
 ALTER TABLE `comment`
   ADD PRIMARY KEY (`CommentId`),
@@ -134,14 +115,14 @@ ALTER TABLE `comment`
   ADD KEY `UserId` (`UserId`);
 
 --
--- Chỉ mục cho bảng `image`
+-- Indexes for table `image`
 --
 ALTER TABLE `image`
   ADD PRIMARY KEY (`ImageId`),
   ADD KEY `PostId` (`PostId`);
 
 --
--- Chỉ mục cho bảng `post`
+-- Indexes for table `post`
 --
 ALTER TABLE `post`
   ADD PRIMARY KEY (`PostId`),
@@ -149,64 +130,64 @@ ALTER TABLE `post`
   ADD KEY `UserId` (`UserId`);
 
 --
--- Chỉ mục cho bảng `user`
+-- Indexes for table `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`UserId`);
 
 --
--- AUTO_INCREMENT cho các bảng đã đổ
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT cho bảng `category`
+-- AUTO_INCREMENT for table `category`
 --
 ALTER TABLE `category`
-  MODIFY `CategoryId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `CategoryId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `comment`
+-- AUTO_INCREMENT for table `comment`
 --
 ALTER TABLE `comment`
   MODIFY `CommentId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `image`
+-- AUTO_INCREMENT for table `image`
 --
 ALTER TABLE `image`
   MODIFY `ImageId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `post`
+-- AUTO_INCREMENT for table `post`
 --
 ALTER TABLE `post`
-  MODIFY `PostId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `PostId` int(11) NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT cho bảng `user`
+-- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `UserId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `UserId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
--- Các ràng buộc cho các bảng đã đổ
+-- Constraints for dumped tables
 --
 
 --
--- Các ràng buộc cho bảng `comment`
+-- Constraints for table `comment`
 --
 ALTER TABLE `comment`
   ADD CONSTRAINT `comment_ibfk_1` FOREIGN KEY (`PostId`) REFERENCES `post` (`PostId`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `comment_ibfk_2` FOREIGN KEY (`UserId`) REFERENCES `user` (`UserId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `image`
+-- Constraints for table `image`
 --
 ALTER TABLE `image`
   ADD CONSTRAINT `image_ibfk_1` FOREIGN KEY (`PostId`) REFERENCES `post` (`PostId`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Các ràng buộc cho bảng `post`
+-- Constraints for table `post`
 --
 ALTER TABLE `post`
   ADD CONSTRAINT `post_ibfk_1` FOREIGN KEY (`CategoryId`) REFERENCES `category` (`CategoryId`) ON DELETE CASCADE ON UPDATE CASCADE,
