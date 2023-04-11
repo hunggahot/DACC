@@ -14,12 +14,8 @@
         </a>
 
         <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-          <li><a href="#" class="nav-link px-2 link-secondary">Overview</a></li>
-          <li><a href="#" class="nav-link px-2 link-dark">Inventory</a></li>
-          <li><a href="#" class="nav-link px-2 link-dark">Customers</a></li>
-          <li><a href="#" class="nav-link px-2 link-dark">Products</a></li>
+          <li><a href="?" class="nav-link px-2 link-secondary">Home</a></li>
         </ul>
-
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3">
           <input type="search" class="form-control" placeholder="Search..." aria-label="Search">
         </form>
@@ -37,7 +33,7 @@
           <ul class="dropdown-menu text-small" aria-labelledby="dropdownUser1">
             <li><p class="dropdown-header">Hello <?php echo $_SESSION['FullName']; ?> </p></li>
             <li><a class="dropdown-item" href="?route=edit-avatar">Update Avatar</a></li>
-            <li><a class="dropdown-item" href="#">My post</a></li>
+            <li><a class="dropdown-item" href="?route=my-post&UserId=<?php echo $_SESSION['UserId'];?>">My post</a></li>
             <li><hr class="dropdown-divider"></li>
             <li><a class="dropdown-item" href="?route=logout">Sign out</a></li>
           </ul>
@@ -49,9 +45,7 @@
     </div>
   </header>
   <div class="container">
-
 </body>
-
 </html>
 
 

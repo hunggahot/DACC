@@ -5,7 +5,7 @@ class Post
     public static function getAll()
 {
     global $pdo;
-    $stmt = $pdo->query('SELECT post.*, user.FullName, user.Avatar FROM post JOIN user ON post.UserId = user.UserId');
+    $stmt = $pdo->query('SELECT post.*, user.FullName, user.Avatar FROM post JOIN user ON post.UserId = user.UserId ORDER BY post.PostTime DESC');
     return $stmt->fetchAll(PDO::FETCH_ASSOC);
 }
 
@@ -18,7 +18,14 @@ class Post
         $stmt->execute();
         return $stmt->fetch(PDO::FETCH_ASSOC);
     }
-
+    public static function findmyID($userid)
+    {
+        global $pdo;
+        $stmt = $pdo->prepare('SELECT post.*, user.* FROM post JOIN user ON post.UserId = user.UserId WHERE user.UserId = :userid');
+        $stmt->bindParam(':userid', $userid);
+        $stmt->execute();
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
     public static function create($userid, $categoryid, $posttitle, $postdes, $posttime)
     {
         global $pdo;

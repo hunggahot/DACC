@@ -1,6 +1,6 @@
 <?php
 require_once('../app/models/Post.php');
-
+require_once('../app/models/Category.php');
 class PostController
 {
     public function index()
@@ -8,7 +8,13 @@ class PostController
         $postlist = Post::getAll();
         require_once('../app/views/admin/post.php');
     }
+    public function myPost()
 
+    {   $categorylist = Category::getAll();
+        $userid = $_GET['UserId'];
+        $postlist = Post::findmyID($userid);
+        require_once('../app/views/home/mypost.php');
+    }
     function createPost()
     {
 
@@ -16,6 +22,7 @@ class PostController
         $categoryid = $_POST['categoryid'];
         $posttitle = $_POST['posttitle'];
         $postdes = $_POST['postdes'];
+        
         $posttime = date('d-m-Y H:i:s');
         $isSuccess = Post::create($userid, $categoryid, $posttitle, $postdes, $posttime);
         if ($isSuccess)
@@ -53,13 +60,28 @@ class PostController
             header('Location: ?route=failure');
         exit;
     }
-
-    function deletePost()
+    public function deletePost()
     {
-        if ($_SERVER['REQUEST_METHOD'] == "POST") {
-            $postid = $_POST['PostId'];
+        $postid = $_GET['PostId'];
+        if (isset($postid)) {
             $isSuccess = Post::delete($postid);
-            echo json_encode((['success' => $isSuccess]));
+            header('Location: ?route=post');
+            exit;
+        } else {
+            header('Location: ?route=failure');
+            exit;
+        }
+    }
+    public function deleteMyPost()
+    {
+        $postid = $_GET['PostId'];
+        if (isset($postid)) {
+            $isSuccess = Post::delete($postid);
+            header('Location: ?');
+            exit;
+        } else {
+            header('Location: ?route=failure');
+            exit;
         }
     }
 }
