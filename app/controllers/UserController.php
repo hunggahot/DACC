@@ -99,7 +99,7 @@ class UserController
             }
         }
 
-        require_once('../app/views/edit-avatar.php');
+        require_once('../app/views/home/edit-avatar.php');
     }
 
     function uploadImageFile()
