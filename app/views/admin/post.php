@@ -23,13 +23,11 @@ include_once('../app/views/admin/layouts/header.php');
                     <?= $post['PostTitle'] ?>
                 </td>
                 <td>
-                    <button class="btn btn-primary edit-post" data-toggle="modal" data-target="#editPostModal-<?= $post['PostId'] ?>"
+                    <button class="btn btn-primary" data-toggle="modal" data-target="#editPostModal-<?= $post['PostId'] ?>"
                         data-id="<?= $post['PostId']; ?>"
                         data-name="<?= $post['PostId']; ?>">Details</button>
 
-                    <button data-toggle="modal" data-target="#deletePostModal"
-                        class="btn btn-danger delete-post-btn"
-                        data-id="<?= $post['PostId']; ?>">Delete</button>
+                        <a href="?route=delete-post&PostId=<?= $post['PostId'] ?>" class="btn btn-danger">Delete</a>
 
                     <!-- Edit Post Modal -->
                     <div class="modal fade" id="editPostModal-<?= $post['PostId'] ?>" tabindex="-1"
@@ -47,11 +45,11 @@ include_once('../app/views/admin/layouts/header.php');
                                         <input type="hidden" id="editPostId" name="PostId"
                                             value="<?= $post['PostId'] ?>" require>
                                         <div class="form-group">
-                                            <label for="editPostName">Post Name</label>
-                                            <input type="text" class="form-control" id="editPostName"
-                                                name="PostName" value="<?= $post['PostName'] ?>" require>
+                                            <label >User Name: <?= $post['FullName'] ?> </label> 
+                                            </br>
+                                            <label >Post Des: <?= $post['PostDes'] ?> </label>                                           
                                         </div>
-                                        <button type="submit" class="btn btn-primary ">Save changes</button>
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                     </form>
                                 </div>
                             </div>

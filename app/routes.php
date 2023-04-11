@@ -62,7 +62,10 @@ $routes = [
         'controller' => 'PostController',
         'action' => 'index'
     ],
-
+    'my-post' => [
+        'controller' => 'PostController',
+        'action' => 'myPost'
+    ],
     'create-post' => [
         'controller' => 'PostController',
         'action' => 'createPost'
@@ -81,6 +84,10 @@ $routes = [
     'delete-post' => [
         'controller' => 'PostController',
         'action' => 'deletePost'
+    ],
+    'delete-mypost' => [
+        'controller' => 'PostController',
+        'action' => 'deleteMyPost'
     ],
 
 

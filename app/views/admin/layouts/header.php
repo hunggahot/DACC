@@ -14,6 +14,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
             <a class="navbar-brand" href="#">Admin Panel</a>
+            <a class="navbar-brand" href="?">Home</a>
         </div>
     </nav>
     <!-- Page Content -->
@@ -24,22 +25,10 @@
                 <div class="position-sticky pt-3">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link active" aria-current="page" href="#">Dashboard</a>
-                        </li>
-                        <li class="nav-item">
                             <a class="nav-link" href="?route=category">Categories</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="?route=post">Posts</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Orders</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Customers</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#">Reports</a>
                         </li>
                     </ul>
                 </div>
