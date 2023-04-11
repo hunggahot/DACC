@@ -8,7 +8,7 @@ class UserController
         session_start();
         session_unset();
         session_destroy();
-        header("Location: ?route=login");
+        header("Location: ?");
         exit;
     }
 

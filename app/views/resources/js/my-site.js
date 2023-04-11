@@ -23,6 +23,10 @@ $(document).ready(function () {
 });
 
 
+$(document).ready(function () {
+    $('#postTable').DataTable();
+});
+
 // Create Category Modal
 function addCategory() {
     var formData = $("#addCategoryForm").serialize();
